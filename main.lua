@@ -5,10 +5,10 @@ local love = require "love"
 love.window.setMode(640, 320, { resizable = true, vsync = true })
 love.graphics.setDefaultFilter("nearest", "nearest")
 
-local sceneManager = SceneManager.new()
+local sceneManager = SceneManager:new()
 -- Register scenes
-sceneManager:addScene("menu", MainMenuScene.new(sceneManager))
-sceneManager:addScene("game", GameScene.new(sceneManager))
+sceneManager:addScene("menu", MainMenuScene:new(sceneManager))
+sceneManager:addScene("game", GameScene:new(sceneManager))
 
 -- Initial scene
 sceneManager:changeScene("menu")

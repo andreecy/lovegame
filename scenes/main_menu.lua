@@ -1,12 +1,11 @@
 local love = require "love"
 
 MainMenuScene = {}
-MainMenuScene.__index = MainMenuScene
+setmetatable(MainMenuScene, { __index = Scene }) -- Inherit from Scene
 
-function MainMenuScene.new(sceneManager)
-    local self = setmetatable({}, MainMenuScene)
-    self.sceneManager = sceneManager
-    self.canvas = love.graphics.newCanvas(640, 320)
+function MainMenuScene:new(sceneManager)
+    local self = Scene:new(sceneManager)            -- Create a new Scene instance
+    setmetatable(self, { __index = MainMenuScene }) -- Set MainMenuScene as its metatable
     self.button = { x = 350, y = 280, width = 100, height = 40, text = "Start Game", hover = false }
     return self
 end
@@ -27,7 +26,6 @@ end
 
 function MainMenuScene:mousepressed(x, y, button)
     if button == 1 then
-        print(x, y)
         local b = self.button
         if x >= b.x and x <= b.x + b.width and y >= b.y and y <= b.y + b.height then
             self.sceneManager:changeScene("game")

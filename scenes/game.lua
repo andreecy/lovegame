@@ -1,9 +1,9 @@
 GameScene = {}
-GameScene.__index = GameScene
 
-function GameScene.new(sceneManager)
-    local self = setmetatable({}, GameScene)
-    self.sceneManager = sceneManager
+function GameScene:new(sceneManager)
+    local self = Scene:new(sceneManager)
+    setmetatable({}, self)
+    self.__index = self
     return self
 end
 

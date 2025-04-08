@@ -1,8 +1,11 @@
+---@class SceneManager
+---@field currentScene Scene
+---@field scenes table<string, Scene>
 SceneManager = {}
-SceneManager.__index = SceneManager
 
-function SceneManager.new()
-    local self = setmetatable({}, SceneManager)
+function SceneManager:new()
+    SceneManager.__index = SceneManager
+    self = setmetatable({}, SceneManager)
     self.currentScene = nil
     self.scenes = {}
     return self

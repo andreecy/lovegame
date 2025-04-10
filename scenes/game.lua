@@ -1,9 +1,9 @@
 GameScene = {}
+setmetatable(GameScene, { __index = Scene })
 
 function GameScene:new(sceneManager)
     local self = Scene:new(sceneManager)
-    setmetatable({}, self)
-    self.__index = self
+    setmetatable(self, { __index = GameScene }) -- Set GameScene as its metatable
     return self
 end
 

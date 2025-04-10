@@ -1,6 +1,5 @@
 require "scene_manager"
 require "scenes"
-local love = require "love"
 
 love.window.setMode(640, 320, { resizable = true, vsync = true })
 love.graphics.setDefaultFilter("nearest", "nearest")
